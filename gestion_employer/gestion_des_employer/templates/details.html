@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h4>Les employers</h4>
+    <hr>
+    <a href="{%url 'add' %}" class="btn btn-sm btn-info">Ajouter un employer</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>nom</th>
+                <th>prenom</th>
+                <th>date de naissance</th>
+                <th>email</th>
+                <th>telephone</th>
+                <th>date embauche</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in employer %}
+                <tr>
+                    <td>{{ s.id }}</td>
+                    <td>{{ s.nom }}</td>
+                    <td>{{ s.prenom }}</td>
+                    <td>{{ s.date_naissance }}</td>
+                    <td>{{ s.email }}</td>
+                    <td>{{ s.tel }}</td>
+                    <td>{{ s.date_embauche }}</td>
+                    <td>
+                        <a href="update/{{s.id}}" class="btn btn-sm btn-info">update</a>
+                        <a href="delete/{{s.id}}" class="btn btn-sm btn-danger">delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+</div>
+
+
+{% endblock content %}
